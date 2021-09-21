@@ -4,8 +4,8 @@
     <string name="action_atualizar">Atualizar</string>
     <string name="action_adicionar">Adicionar</string>
     <string name="action_config">Configurações</string>
-    <string name="dica_login">Informe o seu usuário</string>
     <string name="dica_senha">Informe a sua senha</string>
+    <string name="dica_login">Informe o seu usuário</string>
     <string name="botao_login">Login</string>
 
 </resources>
