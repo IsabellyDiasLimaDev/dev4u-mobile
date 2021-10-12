@@ -9,12 +9,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.toolbar.*
 
-class CadastroActivity : AppCompatActivity() {
+class ConfigActivity : AppCompatActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro)
+        setContentView(R.layout.activity_config)
 
         setSupportActionBar(toolbar)
 
@@ -28,9 +28,15 @@ class CadastroActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item?.itemId
 
-        when{
+        when {
             id == R.id.action_buscar -> Toast.makeText(context, "Botão de buscar", Toast.LENGTH_LONG).show()
             id == R.id.action_atualizar -> Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
+
+            id == R.id.action_sair ->  {
+                var intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
             id == R.id.action_config ->{
                 var intent = Intent (this, ConfigActivity::class.java)
                 startActivity(intent)

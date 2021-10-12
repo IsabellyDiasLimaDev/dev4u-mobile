@@ -88,10 +88,19 @@ class SegundaActivity: AppCompatActivity() {
                     Toast.makeText(context, "Atualizado com sucesso.", Toast.LENGTH_LONG).show()
                 }, 10000)
             }
-            id == R.id.action_config -> Toast.makeText(context, "Botão de configurações", Toast.LENGTH_LONG).show()
+
+            id == R.id.action_sair ->  {
+                var intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
+            id == R.id.action_config ->  {
+                var intent = Intent (this, ConfigActivity::class.java)
+                startActivity(intent)
+            }
             id == R.id.action_adicionar -> {
-                var itent = Intent (this, CadastroActivity::class.java)
-                startActivity(itent)
+                var intent = Intent (this, CadastroActivity::class.java)
+                startActivity(intent)
             }
             id == android.R.id.home -> finish()
         }
