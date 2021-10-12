@@ -16,9 +16,13 @@
                 android:exported="true"
                 android:theme="@style/AppTheme.Toolbar"/>
         <activity
-                android:name=".SegundaActivity"
-                android:exported="true"
-                android:theme="@style/AppTheme.Toolbar"/>
+        android:name=".SegundaActivity"
+        android:exported="true"
+        android:theme="@style/AppTheme.Toolbar"/>
+        <activity
+            android:name=".ConfigActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
