@@ -10,14 +10,17 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.segunda_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class SegundaActivity: AppCompatActivity() {
+class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
 
@@ -30,6 +33,7 @@ class SegundaActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        configuraMenuLateral()
 
         recyclerServicos?.layoutManager = LinearLayoutManager(this)
         recyclerServicos?.itemAnimator = DefaultItemAnimator()
@@ -71,7 +75,6 @@ class SegundaActivity: AppCompatActivity() {
             })
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item?.itemId
 
@@ -107,4 +110,40 @@ class SegundaActivity: AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun configuraMenuLateral() {
+        var toggle = ActionBarDrawerToggle(
+            this,
+            layoutMenuLateral,
+            toolbar,
+            R.string.abrir,
+            R.string.fechar,
+        )
+
+        layoutMenuLateral.addDrawerListener(toggle)
+        toggle.syncState()
+
+        nav_menu_lateral.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.nav_servicos -> {
+                var intent = Intent (this, SegundaActivity::class.java)
+                startActivity(intent)            }
+
+            R.id.nav_orcamento -> {
+                var intent = Intent (this, CadastroActivity::class.java)
+                startActivity(intent)            }
+
+            R.id.nav_sair -> {
+                var intent = Intent (this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+        return true
+    }
 }

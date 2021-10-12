@@ -7,5 +7,7 @@
     <string name="dica_senha">Informe a sua senha</string>
     <string name="dica_login">Informe o seu usuário</string>
     <string name="botao_login">Login</string>
+    <string name="abrir">Abrir</string>
+    <string name="fechar">Fechar</string>
 
 </resources>
