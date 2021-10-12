@@ -62,11 +62,10 @@ class SegundaActivity: AppCompatActivity() {
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String): Boolean {
-
                     return false
                 }
                 override fun onQueryTextSubmit(query: String): Boolean {
-
+                    Toast.makeText(context, "${query}", Toast.LENGTH_LONG).show()
                     return false
                 }
             })
@@ -90,8 +89,8 @@ class SegundaActivity: AppCompatActivity() {
             }
             id == R.id.action_config -> Toast.makeText(context, "Botão de configurações", Toast.LENGTH_LONG).show()
             id == R.id.action_adicionar -> {
-                var itent = Intent (this, CadastroActivity::class.java)
-                startActivity(itent)
+                var intent = Intent (this, CadastroActivity::class.java)
+                startActivity(intent)
             }
             id == android.R.id.home -> finish()
         }
