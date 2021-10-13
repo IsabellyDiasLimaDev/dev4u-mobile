@@ -18,7 +18,7 @@
         <ImageView
                 android:layout_width="210dp"
                 android:layout_height="210dp"
-                app:srcCompat="@drawable/captura_de_tela_2021_09_20_213420"
+                app:srcCompat="@drawable/logo_clear_grant"
                 android:id="@+id/imageView" />
 
         <TextView
