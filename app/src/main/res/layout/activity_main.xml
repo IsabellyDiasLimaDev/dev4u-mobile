@@ -49,6 +49,12 @@
                 android:layout_margin="5dp"
                 android:id="@+id/etPassword" />
 
+        <CheckBox
+            android:id="@+id/checkLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lembrar Login" />
+
         <Button
                 android:text="@string/botao_login"
                 android:layout_width="210dp"

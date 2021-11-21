@@ -9,5 +9,7 @@
     <string name="botao_login">Login</string>
     <string name="abrir">Abrir</string>
     <string name="fechar">Fechar</string>
+    <string name="login_erro">Usuário e/ou senha incorreto(s), tente novamente.</string>
+    <string name="login_sucesso">Usuário e senha corretos.</string>
 
 </resources>

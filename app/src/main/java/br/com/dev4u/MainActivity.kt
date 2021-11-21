@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,18 +17,42 @@ class MainActivity : AppCompatActivity() {
         var etUsername = findViewById(R.id.etUsername) as EditText
         var etPassword = findViewById(R.id.etPassword) as EditText
 
+        etUsername.setText(Prefs.getString("nome_usuario"))
+        etPassword.setText(Prefs.getString("senha_usuario"))
+        checkLogin.isChecked = Prefs.getBoolean("lembrar_login")
+
         btLogin.setOnClickListener {
             val username = etUsername.text.toString()
             val password = etPassword.text.toString()
+            val check_login = checkLogin.isChecked
 
-            if (username == "aluno" && password == "impacta"){
-                Toast.makeText(this, "usuario e senha corretos", Toast.LENGTH_LONG).show()
-                var itent = Intent (this, SegundaActivity::class.java)
-                startActivity(itent)
+            if (check_login){
+                Prefs.setString("nome_usuario", username)
+                Prefs.setString("senha_usuario", password)
+            } else{
+                Prefs.setString("nome_usuario", "")
+                Prefs.setString("senha_usuario", "")
             }
-            else{
-                Toast.makeText(this, "usuario e senha incorretos", Toast.LENGTH_LONG).show()
-            }
+            Prefs.setBoolean("lembrar_login", check_login)
+
+            Thread {
+                val resultadoLogin = LoginService.validarLogin(username, password)
+                if (resultadoLogin.toString() == "SUCESSO"){
+                    showToast(getString(R.string.login_sucesso))
+                    var itent = Intent (this, SegundaActivity::class.java)
+                    startActivity(itent)
+                }
+                else{
+                    showToast(getString(R.string.login_erro))
+                }
+
+            }.start()
+        }
+    }
+
+    fun showToast(toast: String?) {
+        runOnUiThread {
+            Toast.makeText(this , toast, Toast.LENGTH_SHORT).show()
         }
     }
 }
