@@ -47,16 +47,25 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     fun taskServicos() {
-        servicos = ServicoService.getServico(context)
 
-        recyclerServicos?.adapter = ServicoAdapter(servicos) {onClickServico(it)}
+//        servicos = ServicoService.getServico(context)
+
+        Thread {
+            this.servicos = ServicoService.getServico(this)
+            runOnUiThread {
+                recyclerServicos?.adapter = ServicoAdapter(servicos) {onClickServico(it)}
+
+//                enviaNotificacao(this.disciplinas.get(0))
+            }
+        }.start()
+
     }
 
     fun onClickServico(servico: Servico) {
-        Toast.makeText(context, "Data Inicial ${servico.dataInicial} - Data Final ${servico.dataFinal}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, SegundaActivity::class.java)
+        Toast.makeText(context, "Clicou no Serviço ${servico.id}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, ServicoActivity::class.java)
         intent.putExtra("servico", servico)
-        //startActivity(intent)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

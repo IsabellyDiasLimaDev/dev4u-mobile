@@ -7,59 +7,59 @@
         tools:context=".MainActivity">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            tools:layout_editor_absoluteY="1dp"
-            tools:layout_editor_absoluteX="1dp"
-            android:gravity="center"
-            tools:ignore="MissingConstraints">
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
         <ImageView
-                android:layout_width="210dp"
-                android:layout_height="210dp"
-                app:srcCompat="@drawable/logo_clear_grant"
-                android:id="@+id/imageView" />
+            android:id="@+id/imageView"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            app:srcCompat="@drawable/logo_clear_grant" />
 
         <TextView
-                android:text="Bem vindo ao clear grant!"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:id="@+id/textView" />
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bem vindo ao clear grant!"
+            android:textAlignment="center" />
 
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/dica_login"
-                android:autofillHints="username"
-                android:ems="10"
-                android:layout_margin="5dp"
-                android:id="@+id/etUsername"
-                android:minHeight="48dp" />
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints="username"
+            android:ems="10"
+            android:hint="@string/dica_login"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
 
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="@string/dica_senha"
-                android:autofillHints="password"
-                android:ems="10"
-                android:layout_margin="5dp"
-                android:id="@+id/etPassword" />
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/dica_senha"
+            android:inputType="textPassword" />
 
         <CheckBox
             android:id="@+id/checkLogin"
-            android:layout_width="match_parent"
+            android:layout_width="141dp"
             android:layout_height="wrap_content"
             android:text="Lembrar Login" />
 
         <Button
-                android:text="@string/botao_login"
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/btLogin" />
+            android:id="@+id/btLogin"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/botao_login" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
