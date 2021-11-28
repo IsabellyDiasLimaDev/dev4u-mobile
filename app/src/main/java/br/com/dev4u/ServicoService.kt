@@ -8,24 +8,13 @@ import okhttp3.Response
 
 object ServicoService {
 
-    val host = "https://dev4u.pythonanywhere.com/"
+    val host = "https://dev4u.pythonanywhere.com"
 
     fun getServico(context: Context): List<Servico> {
-//        val servicos = mutableListOf<Servico>()
-//
-//        for (i in 1..5) {
-//            var s = Servico()
-//            s.descricao = "Servico nº $i"
-//            s.vl_obra = ""
-//            s.vl_total = ""
-//            s.dt_inicial = "00/00/0000"
-//            s.dt_final = "00/00/0000"
-//            s.imagem = "https://arcondicionadorefrival.com/wp-content/uploads/2019/02/como-instalar-ar-condicionado-split-1-e1549932371685.jpg"
-//            servicos.add(s)
-        try {
 
+        try {
             val to_remove = Prefs.getStringSet("to_remove") as MutableSet<String>
-            for (r in to_remove){
+            for (r in to_remove) {
                 HttpHelper.delete("$host/servicos/${r}")
             }
 
@@ -33,22 +22,34 @@ object ServicoService {
             val url = "$host/servicos"
             val json = HttpHelper.get(url)
 
+            servicos = parseJson<MutableList<Servico>>(json)
 
-            servicos = parseJson< MutableList<Servico>>(json)
+            //TODO Validar para inserir na API quando voltar a conexão com a internet
+
+//            val servicosLocal = DatabaseManager.getServicoDAO().findAll()
+//
+//
+//            var contador = 1
+//            for (servicoBD in servicosLocal) {
+//                if (servicoBD.id?.toInt()!! > servicos.lastIndex + 1) {
+//                    saveServico(servicoBD)
+//                }
+//            }
+//
+//            val json2 = HttpHelper.get(url)
+//
+//            servicos = parseJson<MutableList<Servico>>(json2)
 
             saveDB(servicos)
             return servicos
         } catch (e: Exception) {
-
             val servicos = DatabaseManager.getServicoDAO().findAll()
             return servicos
-
         }
-
-
     }
-    private fun saveDB(servicos: List<Servico>){
-        for (d in servicos){
+
+    private fun saveDB(servicos: List<Servico>) {
+        for (d in servicos) {
             val existe = DatabaseManager.getServicoDAO().getById(d.id!!)
             if (existe == null) {
                 DatabaseManager.getServicoDAO().insert(d)
@@ -56,7 +57,7 @@ object ServicoService {
         }
     }
 
-    fun removeServico(servico: Servico){
+    fun removeServico(servico: Servico) {
         try {
             HttpHelper.delete("$host/servicos/${servico.id}")
         } catch (e: Exception) {
@@ -68,16 +69,35 @@ object ServicoService {
         }
     }
 
-    fun saveServico(): Boolean{
-        val url = "https://dev4u.pythonanywhere.com/servicos"
-        var json = HttpHelper.get(url)
-        var servicos = parseJson<MutableList<Servico>>(json)
-
+    fun saveServico(servico: Servico): br.com.dev4u.Response {
+        try {
+            val json = HttpHelper.post("$host/servicos", servico.toJson())
+            return parseJson(json)
+        } catch (t: Exception){
+            saveServicoOffline(servico)
+            return Response("OK", "Usuario salvo no dispositivo")
+        }
 
     }
 
+    fun existeServico(servico: Servico): Boolean {
+        val dao = DatabaseManager.getServicoDAO()
+        return dao.getByDescricao(servico.descricao) != null
+
+    }
+
+    fun saveServicoOffline(servico: Servico) : Boolean {
+        val dao = DatabaseManager.getServicoDAO()
+
+        if (! existeServico(servico)) {
+            dao.insert(servico)
+        }
+
+        return true
+    }
+
     inline fun <reified T> parseJson(json: String): T {
-        val type = object : TypeToken<T>(){}.type
+        val type = object : TypeToken<T>() {}.type
         return Gson().fromJson<T>(json, type)
     }
 

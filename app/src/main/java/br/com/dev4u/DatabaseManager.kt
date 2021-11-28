@@ -6,7 +6,7 @@ object DatabaseManager {
     private var dbInstance: CGDatabase
 
     init {
-        val context =  ClearGrantApplication.getInstance().applicationContext
+        val context = ClearGrantApplication.getInstance().applicationContext
         dbInstance = Room.databaseBuilder(
             context,
             CGDatabase::class.java,
@@ -14,7 +14,11 @@ object DatabaseManager {
         ).build()
     }
 
-    fun getServicoDAO(): ServicoDAO{
+    fun getServicoDAO(): ServicoDAO {
         return dbInstance.servicoDAO()
+    }
+
+    fun getLoginDAO(): LoginDAO {
+        return dbInstance.loginDAO()
     }
 }

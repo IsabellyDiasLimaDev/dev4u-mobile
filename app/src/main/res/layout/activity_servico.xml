@@ -6,81 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ServicoActivity">
 
-    <TextView
-        android:id="@+id/descricao_servico"
-        android:layout_width="321dp"
-        android:layout_height="19dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/bt_remover"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dt_final_servico"
-        app:layout_constraintVertical_bias="0.26" />
-
-    <TextView
-        android:id="@+id/valor_obra_servico"
-        android:layout_width="311dp"
-        android:layout_height="29dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/valor_total_servico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
-
-    <TextView
-        android:id="@+id/valor_total_servico"
-        android:layout_width="314dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="248dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/dt_inicial_servico"
-        android:layout_width="316dp"
-        android:layout_height="21dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/dt_final_servico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor_total_servico"
-        app:layout_constraintVertical_bias="0.476" />
-
-    <TextView
-        android:id="@+id/dt_final_servico"
-        android:layout_width="323dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="116dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valor_total_servico" />
-
-    <Button
-        android:id="@+id/bt_remover"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-
-        android:text="Remover"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
-
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="98dp"
-        android:layout_height="187dp"
+        android:id="@+id/imgLogo"
+        android:layout_width="97dp"
+        android:layout_height="132dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -89,64 +18,116 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo_clear_grant" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/bt_remover"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Remover"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/txt_descicao"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Descrição do Serviço:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/descricao_servico"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.398" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_descicao" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/txt_vl_obra"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Valor da Obra:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/descricao_servico" />
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/valor_obra_servico"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_vl_obra" />
 
+    <TextView
+        android:id="@+id/txt_vl_total"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Valor Total do Serviço:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valor_obra_servico" />
+
+    <TextView
+        android:id="@+id/valor_total_servico"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_vl_total" />
+
+    <TextView
+        android:id="@+id/txt_dt_inicial"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Data de Início do Serviço:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valor_total_servico" />
+
+    <TextView
+        android:id="@+id/dt_inicial_servico"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dt_inicial" />
+
+    <TextView
+        android:id="@+id/txt_dt_final"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Data de Término do Serviço:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dt_inicial_servico" />
+
+    <TextView
+        android:id="@+id/dt_final_servico"
+        android:layout_width="254dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dt_final" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

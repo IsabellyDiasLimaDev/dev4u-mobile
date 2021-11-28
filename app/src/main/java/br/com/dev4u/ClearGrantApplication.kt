@@ -2,7 +2,7 @@ package br.com.dev4u
 
 import android.app.Application
 
-class ClearGrantApplication: Application() {
+class ClearGrantApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

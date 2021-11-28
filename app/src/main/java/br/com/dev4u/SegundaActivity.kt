@@ -96,6 +96,7 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
                 Handler(Looper.getMainLooper()).postDelayed({
                     progressSegundaActivity.visibility = View.GONE
+                    taskServicos()
                     Toast.makeText(context, "Atualizado com sucesso.", Toast.LENGTH_LONG).show()
                 }, 10000)
             }

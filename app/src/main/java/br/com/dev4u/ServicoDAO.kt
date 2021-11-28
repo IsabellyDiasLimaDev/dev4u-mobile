@@ -12,6 +12,9 @@ interface ServicoDAO {
     @Query("SELECT * FROM servico WHERE id=:id")
     fun getById(id: Long): Servico?
 
+    @Query("SELECT * from servico WHERE descricao=:descricao")
+    fun getByDescricao(descricao: String): Servico?
+
     @Query("SELECT * FROM servico")
     fun findAll(): List<Servico>
 
