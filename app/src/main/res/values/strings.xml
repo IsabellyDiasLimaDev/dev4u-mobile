@@ -11,5 +11,6 @@
     <string name="fechar">Fechar</string>
     <string name="login_erro">Usuário e/ou senha incorreto(s), tente novamente.</string>
     <string name="login_sucesso">Usuário e senha corretos.</string>
+    <string name='API_KEY'>AIzaSyCcb87gY6wFkun5kTisa5sTaFAg_JPSOeI</string>
 
 </resources>

@@ -17,9 +17,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="210dp"
-            android:layout_height="210dp"
-            app:srcCompat="@drawable/logo_clear_grant" />
+            android:layout_width="332dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/logo_cleargrantpng" />
 
         <TextView
             android:id="@+id/textView"
@@ -32,7 +33,7 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="15dp"
             android:autofillHints="username"
             android:ems="10"
             android:hint="@string/dica_login"
@@ -43,7 +44,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="15dp"
             android:autofillHints="password"
             android:ems="10"
             android:hint="@string/dica_senha"
@@ -60,6 +61,14 @@
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:text="@string/botao_login" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="250dp"
+            app:srcCompat="@drawable/linhas" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

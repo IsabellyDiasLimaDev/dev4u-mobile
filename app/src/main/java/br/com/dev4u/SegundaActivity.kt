@@ -48,16 +48,23 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     fun taskServicos() {
 
-//        servicos = ServicoService.getServico(context)
+
 
         Thread {
             this.servicos = ServicoService.getServico(this)
             runOnUiThread {
                 recyclerServicos?.adapter = ServicoAdapter(servicos) {onClickServico(it)}
 
-//                enviaNotificacao(this.disciplinas.get(0))
+                enviaNotificacao(this.servicos.get(0))
             }
         }.start()
+
+    }
+    fun enviaNotificacao(servico: Servico){
+        val intent = Intent(this, ServicoActivity:: class.java)
+        intent.putExtra("servico", servico)
+        NotificationUtil.create(1, intent, "Clear Grant", "O serviço ${servico.id} está pendente e terminará em: ${servico.dt_final}")
+
 
     }
 

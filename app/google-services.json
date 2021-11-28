@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373809283997",
+    "project_id": "clear-grant-a0166",
+    "storage_bucket": "clear-grant-a0166.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373809283997:android:3ab45e76cd487c07b22574",
+        "android_client_info": {
+          "package_name": "br.com.dev4u"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373809283997-na5e3tcsgm56m47su2h3759r2ji2me18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkqYEXAfseCQW2iQyf_CKjhIelMAakzc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373809283997-na5e3tcsgm56m47su2h3759r2ji2me18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
