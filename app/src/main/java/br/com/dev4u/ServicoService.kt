@@ -7,39 +7,18 @@ import com.google.gson.reflect.TypeToken
 import okhttp3.Response
 
 object ServicoService {
-
     val host = "https://dev4u.pythonanywhere.com"
 
     fun getServico(context: Context): List<Servico> {
-
         try {
             val to_remove = Prefs.getStringSet("to_remove") as MutableSet<String>
             for (r in to_remove) {
                 HttpHelper.delete("$host/servicos/${r}")
             }
-
             var servicos = mutableListOf<Servico>()
             val url = "$host/servicos"
             val json = HttpHelper.get(url)
-
             servicos = parseJson<MutableList<Servico>>(json)
-
-            //TODO Validar para inserir na API quando voltar a conexão com a internet
-
-//            val servicosLocal = DatabaseManager.getServicoDAO().findAll()
-//
-//
-//            var contador = 1
-//            for (servicoBD in servicosLocal) {
-//                if (servicoBD.id?.toInt()!! > servicos.lastIndex + 1) {
-//                    saveServico(servicoBD)
-//                }
-//            }
-//
-//            val json2 = HttpHelper.get(url)
-//
-//            servicos = parseJson<MutableList<Servico>>(json2)
-
             saveDB(servicos)
             return servicos
         } catch (e: Exception) {
@@ -77,13 +56,11 @@ object ServicoService {
             saveServicoOffline(servico)
             return Response("OK", "Usuario salvo no dispositivo")
         }
-
     }
 
     fun existeServico(servico: Servico): Boolean {
         val dao = DatabaseManager.getServicoDAO()
         return dao.getByDescricao(servico.descricao) != null
-
     }
 
     fun saveServicoOffline(servico: Servico) : Boolean {
@@ -92,7 +69,6 @@ object ServicoService {
         if (! existeServico(servico)) {
             dao.insert(servico)
         }
-
         return true
     }
 
@@ -100,6 +76,4 @@ object ServicoService {
         val type = object : TypeToken<T>() {}.type
         return Gson().fromJson<T>(json, type)
     }
-
-
 }

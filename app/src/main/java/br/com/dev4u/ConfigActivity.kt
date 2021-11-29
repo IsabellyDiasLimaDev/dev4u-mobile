@@ -43,7 +43,7 @@ class ConfigActivity : AppCompatActivity() {
             ).show()
 
             id == R.id.action_sair -> {
-                var intent = Intent(this, MainActivity::class.java)
+                var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
 

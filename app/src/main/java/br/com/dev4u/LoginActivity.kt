@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
 //        var usuario = arrayListOf<Login>()
         var btLogin = findViewById(R.id.btLogin) as Button
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 //                    }
 //                    Prefs.setBoolean("lembrar_login", check_login)
 //
-//                    var intent = Intent (this, SegundaActivity::class.java)
+//                    var intent = Intent (this, TelaInicialActivity::class.java)
 //
 //                    intent.putExtra("nome_usuario", username)
 //                    intent.putExtra("senha_usuario", password)
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 val resultadoLogin = LoginService.validarLogin(username, password)
                 if (resultadoLogin.toString() == "SUCESSO"){
                     showToast(getString(R.string.login_sucesso))
-                    var intent = Intent (this, SegundaActivity::class.java)
+                    var intent = Intent (this, TelaInicialActivity::class.java)
                     startActivity(intent)
                 }
                 else{

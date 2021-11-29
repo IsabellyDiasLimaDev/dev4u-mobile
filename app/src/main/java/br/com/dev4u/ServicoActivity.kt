@@ -12,7 +12,6 @@ class ServicoActivity : AppCompatActivity()  {
         setContentView(R.layout.activity_servico)
 
         val servico = intent.getSerializableExtra("servico") as Servico
-
         descricao_servico.text = servico.descricao
         valor_obra_servico.text = "R$ ${servico.vl_obra}"
         valor_total_servico.text = "R$ ${servico.vl_total}"
@@ -36,14 +35,11 @@ class ServicoActivity : AppCompatActivity()  {
     fun taskExcluir(servico: Servico): Boolean {
         Thread {
             ServicoService.removeServico(servico)
-
             runOnUiThread {
                 finish()
             }
         }.start()
-
         Toast.makeText(this, "Serviço excluído com sucesso!", Toast.LENGTH_LONG).show()
-
         return true
     }
 }

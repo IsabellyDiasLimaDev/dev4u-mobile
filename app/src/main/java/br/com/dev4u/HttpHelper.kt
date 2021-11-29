@@ -6,9 +6,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 
 object HttpHelper {
-
     var client = OkHttpClient()
-
     val JSON = MediaType.parse("application/json; charset=utf-8")
 
     fun get(url: String): String {

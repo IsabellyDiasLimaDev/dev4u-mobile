@@ -39,25 +39,19 @@ class ServicoAdapter (
 
     override fun onBindViewHolder(holder: ServicoViewHolder, position: Int) {
         val context = holder.itemView.context
-
         val servico = this.servicos[position]
-
         holder.cardNome.text = servico.descricao
         holder.cardProgress.visibility = View.INVISIBLE
-
         Picasso.with(context).load(servico.imagem).fit().into(holder.cardImage,
                 object : com.squareup.picasso.Callback {
                     override fun onSuccess() {
                         holder.cardProgress.visibility = View.GONE
                     }
-
                     override fun onError() {
                         holder.cardProgress.visibility = View.GONE
                     }
                 }
         )
-
         holder.itemView.setOnClickListener {onClick(servico)}
     }
-
 }

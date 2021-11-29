@@ -5,6 +5,8 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
+import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
@@ -37,7 +39,7 @@ object NotificationUtil {
             .setContentIntent(p)
             .setContentTitle(titulo)
             .setContentText(texto)
-            .setSmallIcon(R.mipmap.app_logo)
+            .setSmallIcon(R.drawable.logo_clear_grant)
             .setAutoCancel(true)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
         with(NotificationManagerCompat.from(ClearGrantApplication.getInstance())){

@@ -11,27 +11,23 @@ import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class CadastroActivity : AppCompatActivity() {
-
     private val context: Context get() = this
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         btSave.setOnClickListener {
             val servico = Servico()
-
             servico.descricao = descricao.text.toString()
             servico.vl_obra = vl_obra.text.toString()
             servico.vl_total = vl_total.text.toString()
             servico.dt_inicial = dt_inicial.text.toString()
             servico.dt_final = dt_final.text.toString()
             servico.imagem = "https://arcondicionadorefrival.com/wp-content/uploads/2019/02/como-instalar-ar-condicionado-split-1-e1549932371685.jpg"
-
             taskAtualizar(servico)
-
-            val intent = Intent(this, SegundaActivity::class.java)
+            val intent = Intent(this, TelaInicialActivity::class.java)
             startActivity(intent)
         }
     }
@@ -43,7 +39,6 @@ class CadastroActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item?.itemId
-
         when {
             id == R.id.action_buscar -> Toast.makeText(
                 context,
@@ -65,7 +60,6 @@ class CadastroActivity : AppCompatActivity() {
             }
             id == android.R.id.home -> finish()
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -76,9 +70,7 @@ class CadastroActivity : AppCompatActivity() {
                 finish()
             }
         }.start()
-
         Toast.makeText(this, "Serviço salvo com sucesso!", Toast.LENGTH_LONG).show()
-
         return true
     }
 

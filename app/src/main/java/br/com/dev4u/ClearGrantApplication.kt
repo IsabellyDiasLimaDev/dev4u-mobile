@@ -11,7 +11,6 @@ class ClearGrantApplication : Application() {
 
     companion object {
         private var appInstance: ClearGrantApplication? = null
-
         fun getInstance(): ClearGrantApplication {
             if (appInstance == null) {
                 throw IllegalStateException("Configurar o application no Manifest")

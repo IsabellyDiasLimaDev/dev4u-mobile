@@ -10,21 +10,21 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     override fun onNewToken(token: String?) {
         super.onNewToken(token)
         Log.d("dev4ufirebase", "Novo token: $token")
-// Guarda o token em Shared Preferences
+        // Guarda o token em Shared Preferences
         Prefs.setString("FB_TOKEN", token!!)
     }
+
     // recebe a notificação de push
     override fun onMessageReceived(mensagemRemota: RemoteMessage?) {
         Log.d("dev4ufirebase", "onMessageReceived")
-// verifica se a mensagem recebida do firebase é uma notificação
+        // verifica se a mensagem recebida do firebase é uma notificação
         if (mensagemRemota?.notification != null) {
             val titulo = mensagemRemota?.notification?.title
             var corpo = mensagemRemota?.notification?.body
             Log.d("dev4ufirebase", "Titulo da mensagem: $titulo")
             Log.d("dev4ufirebase", "Corpo da mensagem: $corpo")
 
-            if (mensagemRemota?.data.isNotEmpty()){
-
+            if (mensagemRemota?.data.isNotEmpty()) {
                 val servicoId = mensagemRemota.data.get("servicoId")
                 corpo += " $servicoId"
             }

@@ -16,25 +16,19 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.segunda_activity.*
+import kotlinx.android.synthetic.main.tela_inicial_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val context: Context get() = this
-
     private var servicos = listOf<Servico>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.segunda_activity)
-
+        setContentView(R.layout.tela_inicial_activity)
         setSupportActionBar(toolbar)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         configuraMenuLateral()
-
         recyclerServicos?.layoutManager = LinearLayoutManager(this)
         recyclerServicos?.itemAnimator = DefaultItemAnimator()
         recyclerServicos?.setHasFixedSize(true)
@@ -42,30 +36,23 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onResume() {
         super.onResume()
-
         taskServicos()
     }
 
     fun taskServicos() {
-
-
-
         Thread {
             this.servicos = ServicoService.getServico(this)
             runOnUiThread {
                 recyclerServicos?.adapter = ServicoAdapter(servicos) {onClickServico(it)}
-
                 enviaNotificacao(this.servicos.get(0))
             }
         }.start()
-
     }
+
     fun enviaNotificacao(servico: Servico){
         val intent = Intent(this, ServicoActivity:: class.java)
         intent.putExtra("servico", servico)
         NotificationUtil.create(1, intent, "Clear Grant", "O serviço ${servico.id} está pendente e terminará em: ${servico.dt_final}")
-
-
     }
 
     fun onClickServico(servico: Servico) {
@@ -76,9 +63,7 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         menuInflater.inflate(R.menu.menu_main, menu)
-
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String): Boolean {
@@ -91,28 +76,24 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
             })
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item?.itemId
-
         when{
             id == R.id.action_buscar -> Toast.makeText(context, "Botão de buscar", Toast.LENGTH_LONG).show()
             id == R.id.action_atualizar -> {
                 Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
-
                 progressSegundaActivity.visibility = View.VISIBLE
-
                 Handler(Looper.getMainLooper()).postDelayed({
                     progressSegundaActivity.visibility = View.GONE
                     taskServicos()
                     Toast.makeText(context, "Atualizado com sucesso.", Toast.LENGTH_LONG).show()
                 }, 10000)
             }
-
             id == R.id.action_sair ->  {
-                var intent = Intent (this, MainActivity::class.java)
+                var intent = Intent (this, LoginActivity::class.java)
                 startActivity(intent)
             }
-
             id == R.id.action_config ->  {
                 var intent = Intent (this, ConfigActivity::class.java)
                 startActivity(intent)
@@ -123,7 +104,6 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
             id == android.R.id.home -> finish()
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -135,31 +115,24 @@ class SegundaActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.string.abrir,
             R.string.fechar,
         )
-
         layoutMenuLateral.addDrawerListener(toggle)
         toggle.syncState()
-
         nav_menu_lateral.setNavigationItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
             R.id.nav_servicos -> {
-                var intent = Intent (this, SegundaActivity::class.java)
+                var intent = Intent (this, TelaInicialActivity::class.java)
                 startActivity(intent)            }
-
             R.id.nav_orcamento -> {
                 var intent = Intent (this, CadastroActivity::class.java)
                 startActivity(intent)            }
-
             R.id.nav_sair -> {
-                var intent = Intent (this, MainActivity::class.java)
+                var intent = Intent (this, LoginActivity::class.java)
                 startActivity(intent)
             }
-
         }
-
         layoutMenuLateral.closeDrawer(GravityCompat.START)
         return true
     }
