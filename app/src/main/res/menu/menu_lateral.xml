@@ -11,6 +11,11 @@
             android:icon="@drawable/ic_orcamento"
             android:checked="true" />
         <item
+            android:id="@+id/nav_localizacao"
+            android:icon="@drawable/ic_location"
+            android:title="Localização"
+            android:checked="true"/>
+        <item
             android:id="@+id/nav_sair"
             android:icon="@drawable/ic_logout"
             android:title="Sair"

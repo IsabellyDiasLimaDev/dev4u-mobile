@@ -128,6 +128,10 @@ class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_orcamento -> {
                 var intent = Intent (this, CadastroActivity::class.java)
                 startActivity(intent)            }
+            R.id.nav_localizacao -> {
+                var intent = Intent(this, MapasActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_sair -> {
                 var intent = Intent (this, LoginActivity::class.java)
                 startActivity(intent)

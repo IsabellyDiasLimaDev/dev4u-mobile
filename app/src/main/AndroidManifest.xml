@@ -5,6 +5,12 @@
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Obter Localização por Hardware-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Obter Localização por wi-fi e triangulação de antenas-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- outras permissões e configurações existentes-->
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <application
         android:name=".ClearGrantApplication"
@@ -33,6 +39,12 @@
             android:name=".ConfigActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".MapasActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Toolbar"
+            />
 
 
         <activity
@@ -67,6 +79,15 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
+
+        <!--Google play services-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--Chave de acesso à API do Google Maps-->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/API_KEY" />
 
     </application>
 
