@@ -23,10 +23,7 @@ object NotificationUtil {
 
             manager.createNotificationChannel(c)
 
-
         }
-
-
     }
 
     fun create (id: Int, intent: Intent, titulo: String, texto: String){

@@ -1,6 +1,7 @@
 package br.com.dev4u
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -8,6 +9,7 @@ import okhttp3.Response
 
 object ServicoService {
     val host = "https://dev4u.pythonanywhere.com"
+    val TAG = "WS_ClearGrantApp"
 
     fun getServico(context: Context): List<Servico> {
         try {
@@ -18,6 +20,7 @@ object ServicoService {
             var servicos = mutableListOf<Servico>()
             val url = "$host/servicos"
             val json = HttpHelper.get(url)
+            Log.d(TAG, json)
             servicos = parseJson<MutableList<Servico>>(json)
             saveDB(servicos)
             return servicos

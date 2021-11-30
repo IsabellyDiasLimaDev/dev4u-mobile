@@ -20,15 +20,21 @@ import kotlinx.android.synthetic.main.tela_inicial_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class TelaInicialActivity: NavigationDrawerActivity() {
+
     private val context: Context get() = this
     private var servicos = listOf<Servico>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tela_inicial_activity)
+
         setSupportActionBar(toolbar)
+        supportActionBar?.title="Início"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         configuraMenuLateral()
+
         recyclerServicos?.layoutManager = LinearLayoutManager(this)
         recyclerServicos?.itemAnimator = DefaultItemAnimator()
         recyclerServicos?.setHasFixedSize(true)
@@ -64,6 +70,7 @@ class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemS
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String): Boolean {
@@ -74,13 +81,17 @@ class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemS
                     return false
                 }
             })
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         val id = item?.itemId
+
         when{
             id == R.id.action_buscar -> Toast.makeText(context, "Botão de buscar", Toast.LENGTH_LONG).show()
+
             id == R.id.action_atualizar -> {
                 Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
                 progressSegundaActivity.visibility = View.VISIBLE
@@ -90,54 +101,25 @@ class TelaInicialActivity: AppCompatActivity(), NavigationView.OnNavigationItemS
                     Toast.makeText(context, "Atualizado com sucesso.", Toast.LENGTH_LONG).show()
                 }, 10000)
             }
+
             id == R.id.action_sair ->  {
                 var intent = Intent (this, LoginActivity::class.java)
                 startActivity(intent)
             }
+
             id == R.id.action_config ->  {
                 var intent = Intent (this, ConfigActivity::class.java)
                 startActivity(intent)
             }
+
             id == R.id.action_adicionar -> {
                 var intent = Intent (this, CadastroActivity::class.java)
                 startActivity(intent)
             }
+
             id == android.R.id.home -> finish()
         }
+
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun configuraMenuLateral() {
-        var toggle = ActionBarDrawerToggle(
-            this,
-            layoutMenuLateral,
-            toolbar,
-            R.string.abrir,
-            R.string.fechar,
-        )
-        layoutMenuLateral.addDrawerListener(toggle)
-        toggle.syncState()
-        nav_menu_lateral.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_servicos -> {
-                var intent = Intent (this, TelaInicialActivity::class.java)
-                startActivity(intent)            }
-            R.id.nav_orcamento -> {
-                var intent = Intent (this, CadastroActivity::class.java)
-                startActivity(intent)            }
-            R.id.nav_localizacao -> {
-                var intent = Intent(this, MapasActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.nav_sair -> {
-                var intent = Intent (this, LoginActivity::class.java)
-                startActivity(intent)
-            }
-        }
-        layoutMenuLateral.closeDrawer(GravityCompat.START)
-        return true
     }
 }

@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import okhttp3.Response
 
 object LoginService {
+
     val host = "https://dev4u.pythonanywhere.com/"
 
     fun validarLogin(usuario: String, senha: String): String {

@@ -5,11 +5,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_servico.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ServicoActivity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servico)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.title="Detalhes"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val servico = intent.getSerializableExtra("servico") as Servico
         descricao_servico.text = servico.descricao

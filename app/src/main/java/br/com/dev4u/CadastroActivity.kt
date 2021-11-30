@@ -16,9 +16,13 @@ class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
+
         setSupportActionBar(toolbar)
+        supportActionBar?.title="Novo Serviço"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         btSave.setOnClickListener {
+
             val servico = Servico()
             servico.descricao = descricao.text.toString()
             servico.vl_obra = vl_obra.text.toString()
@@ -26,7 +30,9 @@ class CadastroActivity : AppCompatActivity() {
             servico.dt_inicial = dt_inicial.text.toString()
             servico.dt_final = dt_final.text.toString()
             servico.imagem = "https://arcondicionadorefrival.com/wp-content/uploads/2019/02/como-instalar-ar-condicionado-split-1-e1549932371685.jpg"
+
             taskAtualizar(servico)
+
             val intent = Intent(this, TelaInicialActivity::class.java)
             startActivity(intent)
         }
