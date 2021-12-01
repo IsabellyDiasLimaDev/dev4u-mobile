@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_config.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar.toolbar
 
 class ConfigActivity : AppCompatActivity() {
 
@@ -18,8 +20,17 @@ class ConfigActivity : AppCompatActivity() {
         setContentView(R.layout.activity_config)
 
         setSupportActionBar(toolbar)
+        setupNotificationSwitch()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setupNotificationSwitch() {
+        switch2.isChecked = Prefs.getBoolean("notificacao", true)
+
+        switch2.setOnCheckedChangeListener { _, isChecked ->
+            Prefs.setBoolean("notificacao", isChecked)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

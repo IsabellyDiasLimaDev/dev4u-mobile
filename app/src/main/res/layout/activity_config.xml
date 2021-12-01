@@ -3,62 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".ConfigActivity"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ConfigActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Configurações"
-        android:textSize="60px"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintVertical_bias="0.054" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="293dp"
-        android:layout_height="23dp"
-        android:text="Localização"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
 
-    <Switch
+
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch2"
-        android:layout_width="296dp"
+        android:layout_width="0dp"
         android:layout_height="29dp"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="20dp"
         android:text="Notificações"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.247" />
-
-    <Switch
-        android:id="@+id/switch4"
-        android:layout_width="294dp"
-        android:layout_height="25dp"
-        android:text="Permanecer Conectado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/linhas"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="606dp" />
+        android:id="@+id/imageView2"
+        android:layout_width="543dp"
+        android:layout_height="79dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/linhas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

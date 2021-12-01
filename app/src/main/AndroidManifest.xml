@@ -12,6 +12,9 @@
     <!-- outras permissões e configurações existentes-->
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
+    <!-- Permitir criar arquivo no armazenamento do dispositivo -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".ClearGrantApplication"
             android:allowBackup="true"
@@ -73,7 +76,7 @@
      See README(https://goo.gl/l4GJaQ) for more. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/logo_clear_grant" />
+            android:resource="@drawable/ic_notificacao" />
         <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more. -->
         <meta-data

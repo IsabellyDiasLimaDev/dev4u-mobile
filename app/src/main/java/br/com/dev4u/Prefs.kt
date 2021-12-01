@@ -13,8 +13,8 @@ object Prefs {
         prefs().edit().putBoolean(flag, valor).apply()
     }
 
-    fun getBoolean(flag: String): Boolean {
-        return prefs().getBoolean(flag, false)
+    fun getBoolean(flag: String, defaultValue:Boolean = false): Boolean {
+        return prefs().getBoolean(flag, defaultValue)
     }
 
     fun setString(flag: String, valor: String) {

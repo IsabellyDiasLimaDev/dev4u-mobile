@@ -18,7 +18,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     override fun onMessageReceived(mensagemRemota: RemoteMessage?) {
         Log.d("dev4ufirebase", "onMessageReceived")
         // verifica se a mensagem recebida do firebase é uma notificação
-        if (mensagemRemota?.notification != null) {
+        val temNotificacaoHabilitada = Prefs.getBoolean("notificacao", true)
+        if (mensagemRemota?.notification != null && temNotificacaoHabilitada) {
             val titulo = mensagemRemota?.notification?.title
             var corpo = mensagemRemota?.notification?.body
             Log.d("dev4ufirebase", "Titulo da mensagem: $titulo")

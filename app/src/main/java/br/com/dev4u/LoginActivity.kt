@@ -50,7 +50,7 @@ class LoginActivity : DebugActivity() {
                     }
                 }.start()
             } else {
-                showToast("Verifique a conexão de intenet e tente novamente.")
+                showToast("Verifique a conexão de internet e tente novamente.")
             }
         }
     }

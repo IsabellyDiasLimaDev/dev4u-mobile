@@ -36,7 +36,7 @@ object NotificationUtil {
             .setContentIntent(p)
             .setContentTitle(titulo)
             .setContentText(texto)
-            .setSmallIcon(R.drawable.logo_clear_grant)
+            .setSmallIcon(R.drawable.ic_notificacao)
             .setAutoCancel(true)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
         with(NotificationManagerCompat.from(ClearGrantApplication.getInstance())){

@@ -56,9 +56,18 @@ class TelaInicialActivity: NavigationDrawerActivity() {
     }
 
     fun enviaNotificacao(servico: Servico){
-        val intent = Intent(this, ServicoActivity:: class.java)
-        intent.putExtra("servico", servico)
-        NotificationUtil.create(1, intent, "Clear Grant", "O serviço ${servico.id} está pendente e terminará em: ${servico.dt_final}")
+        val temNotificacaoHabilitada = Prefs.getBoolean("notificacao", true)
+
+        if(temNotificacaoHabilitada) {
+            val intent = Intent(this, ServicoActivity::class.java)
+            intent.putExtra("servico", servico)
+            NotificationUtil.create(
+                1,
+                intent,
+                "Clear Grant",
+                "O serviço ${servico.id} está pendente e terminará em: ${servico.dt_final}"
+            )
+        }
     }
 
     fun onClickServico(servico: Servico) {
